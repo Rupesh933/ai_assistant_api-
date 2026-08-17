@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: ai_assistant_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ai_assistant
+      POSTGRES_USER: ai_assistant_user
+      POSTGRES_PASSWORD: ai_assistant_pass
+    ports:
+      - '5433:5432'
+    volumes:
+      - ai_assistant_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ai_assistant_user -d ai_assistant']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  ai_assistant_pgdata:
