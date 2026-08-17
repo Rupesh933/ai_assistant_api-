@@ -4,7 +4,7 @@ from .serializers import ConversationDetailSerializer, MessageSerializer, Conver
 
 class ConversationListCreateView(generics.ListCreateAPIView):
     serializer_class = ConversationSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     # permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -17,7 +17,7 @@ class ConversationListCreateView(generics.ListCreateAPIView):
 
 class ConversationDetailView(generics.RetrieveAPIView):
     serializer_class = ConversationDetailSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     # permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):

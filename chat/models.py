@@ -34,7 +34,7 @@ class Message(models.Model):
         FAILED = "Failed", "failed"
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, default="")
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, default="messages")
 
     role = models.CharField(max_length=255, choices=Role.choices)
     content = models.CharField(blank=True, default="")
